@@ -1,0 +1,4 @@
+rootProject.name = 'moje-sprawy-2'
+
+include 'moje-sprawy-2-domain'
+include 'moje-sprawy-2-rest'

@@ -1,0 +1,36 @@
+subprojects {
+	apply plugin: 'java'
+
+	group = projGroup
+	version = projVersion
+	sourceCompatibility = theSourceCompatibility
+
+	configurations {
+		compileOnly {
+			extendsFrom annotationProcessor
+		}
+	}
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		implementation "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+
+		compileOnly "org.projectlombok:lombok:$lombokVersion"
+
+		runtimeOnly "com.h2database:h2:$h2Version"
+		runtimeOnly "mysql:mysql-connector-java:$mysqlConnectorVersion"
+
+		annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+
+		testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion") {
+			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		}
+	}
+
+	test {
+		useJUnitPlatform()
+	}
+}
